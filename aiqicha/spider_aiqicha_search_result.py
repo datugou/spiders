@@ -52,7 +52,7 @@ def write_comp(resp):
     jd = json.loads(page_data)
     for comp in jd['result']['resultList']:
         asp = json.dumps(comp)
-        outFile.write(asp+'\n')
+        out_file.write(asp+'\n')
         
 
 headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'}
@@ -65,7 +65,7 @@ wdl = 'ABCDEFGHIJKLMNOPQRST'
 # 有代理池的把use_proxy的值改成1
 use_proxy = 0
 kw = '填写需要的搜索词'
-outFile = open(r'D:\data.txt','a')
+out_file = open(r'D:\data.txt','a')
 out_range = []
 
 
@@ -80,7 +80,8 @@ for pr in provs:
             page_data = re.findall('pageData = ({.*})',resp.text)[0]
             jd = json.loads(page_data)
             tnum = int(jd['result']['totalNumFound'])
-
+            print(pr,lv,tnum)
+            
             if tnum <= 1000:
                 page = tnum//10 + 1
                 for p in range(page):
@@ -125,4 +126,4 @@ for pr in provs:
 print('超出1000范围')                        
 for i in out_range:
     print(i)
-outFile.close()
+out_file.close()
