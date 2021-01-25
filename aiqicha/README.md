@@ -15,7 +15,8 @@
 ### spider_aiqicha_detail.py
 
 根据上面那个爬虫爬到的目录信息，可以获取企业的 pid，然后构造企业详情页的链接去抓数据。
-我这里构造的链接（'https://aiqicha.baidu.com/detail/basicAllDataAjax?pid=%s'%(pid)）不是真实的详情页，而是详情页里面的一个数据接口，也是 json 格式的，应该包含了企业的所有基本信息。
+我这里构造的链接'https://aiqicha.baidu.com/detail/basicAllDataAjax?pid=%s'%(pid)
+不是真实的详情页，而是详情页里面的一个数据接口，也是 json 格式的，应该包含了企业的所有基本信息。
 
 真实的详情页链接是类似这样的：
 - https://aiqicha.baidu.com/detail/compinfo?pid=25802052262730
