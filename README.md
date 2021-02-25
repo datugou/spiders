@@ -15,7 +15,7 @@ ___
 ### 短视频 APP 视频爬虫
 
 - [抖音爬虫](https://github.com/datugou/spiders/tree/main/douyin)  
-根据 APP 上用户主页的分享链接，下载该用户所有视频
+根据 APP 上用户主页的分享链接，下载该用户所有视频  
 APP：抖音
 
 
