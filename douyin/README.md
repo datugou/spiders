@@ -10,7 +10,7 @@
 
 在 APP 上进入用户主页，获取分享链接。
 
-![](https://user-images.githubusercontent.com/30107520/109177356-ab865380-77c2-11eb-90e9-8f1039b9a155.jpg)
+<div align=center><img src="https://user-images.githubusercontent.com/30107520/109177356-ab865380-77c2-11eb-90e9-8f1039b9a155.jpg" width = '300'></div>
 
 在 spider_douyin_videos.py 中填写分享链接，并设置下载地址。
 
