@@ -2,7 +2,7 @@ import re,json,time
 import requests
 from bs4 import BeautifulSoup
 
-def get_proxy()
+def get_proxy():
     # 需要根据自己ip代理服务构造一个函数
     # 返回一个ip地址
     # 格式"http://000.000.000.000:0000"
@@ -74,13 +74,14 @@ if use_proxy == 1:
     req_get = req_get_proxy
 for pr in provs:
     for lv in rcl:
-            url0 = 'https://aiqicha.baidu.com/s?q=%s&f={"provinceCode":"%d","regCapLevel":"level%d"}'%(kw,pr,lv)
+        for ar in list(wdl):
+            url0 = 'https://aiqicha.baidu.com/s?q=%s&f={"provinceCode":"%d","regCapLevel":"level%d","industryCode1":"%s"}'%(kw,pr,lv,ar)
             resp = req_get(url0)
             
             page_data = re.findall('pageData = ({.*})',resp.text)[0]
             jd = json.loads(page_data)
             tnum = int(jd['result']['totalNumFound'])
-            print(pr,lv,tnum)
+            print(pr,lv,ar,tnum)
             
             if tnum <= 1000:
                 page = tnum//10 + 1
@@ -95,7 +96,7 @@ for pr in provs:
             # 大于1000条，进行拆分检索
             elif tnum > 1000:
                 for yr in sy:
-                    url = 'https://aiqicha.baidu.com/s?q=%s&f={"provinceCode":"%d","regCapLevel":"level%d","startYear":"%s"}'%(kw,pr,lv,yr)
+                    url = 'https://aiqicha.baidu.com/s?q=%s&f={"provinceCode":"%d","regCapLevel":"level%d","industryCode1":"%s","startYear":"%s"}'%(kw,pr,lv,ar,yr)
                     try:
                         resp = req_get(url)
                         write_comp(resp)
@@ -121,7 +122,7 @@ for pr in provs:
                                 
                     # 还大于1000条的话，记录该条信息，也可以根据其他筛选条件继续拆分检索
                     if tnum > 1000:
-                        out_range.append([pr,lv,yr])
+                        out_range.append([pr,lv,yr,ar])
 
 print('超出1000范围')                        
 for i in out_range:
