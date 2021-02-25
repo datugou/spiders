@@ -16,7 +16,7 @@
 
 ```python
 # 填写用户分享链接
-users_list = ['https://v.douyin.com/eJDmuLm/']
+users_list = ['https://v.douyin.com/eJdmuLm/']
 
 # 设置下载地址
 download_path = r'C:\Users\nm\Desktop'
