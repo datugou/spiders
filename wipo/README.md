@@ -16,8 +16,10 @@
 在 spider_patentscope_crack_captcha.py 中 main() 函数返回带 cookies 的 headers，爬虫直接用该 headers 即可正常获取数据。
 
 cookies 有时效性，并且短时间内多次访问，cookies 也会失效。失效后需要重新获取 cookies。
+
 cookies 失效后，访问会重定向到 'https://patentscope2.wipo.int/search/en/captcha/captcha.jsf' ，可以根据此判断何时更新 cookies。
 
+### js 
 为了破解 ‘_pk_id.5.5313’ 参数，需要使用PhantomJS，
 首先下载它的[驱动](https://phantomjs.org/download.html)，解压后在 bin 文件夹找到 phantomjs.exe，然后把它放下Python代码统一目录下。
 
@@ -32,7 +34,6 @@ cookies 失效后，访问会重定向到 'https://patentscope2.wipo.int/search/
 `captcha_img_data` 文件为所有验证码图片的标记数据，经过图片对比算法变成了 hash 值。
 
 
-下载的视频保存在以抖音用户名为名程的文件夹里。
 
 ---
 [返回首页](https://github.com/datugou/spiders)
