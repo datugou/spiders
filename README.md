@@ -21,7 +21,7 @@ APP：抖音
 ### 专利信息爬虫
 
 - [WIPO patentscope 爬虫](https://github.com/datugou/spiders/tree/main/wipo)  
-只提供了验证码识别的代码
+只提供了验证码识别的代码  
 原站：https://patentscope2.wipo.int/search/en/search.jsf
 
 ___
