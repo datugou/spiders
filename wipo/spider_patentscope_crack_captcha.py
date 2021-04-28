@@ -63,7 +63,7 @@ def get_ori_cookie():
     
     return cookie
 
-def get_tmeporary_cookie(capther, viewstate, headers, rep=5):
+def get_tmeporary_cookie(chaptcha, viewstate, headers, rep=5):
     '''
     提交验证码答案，获取临时cookie的值
     '''
@@ -75,8 +75,8 @@ def get_tmeporary_cookie(capther, viewstate, headers, rep=5):
         # 'javax.faces.partial.render': 'captchaForm',
         # 'captchaForm:SUBMIT': 'captchaForm:SUBMIT',
         'captchaForm': 'captchaForm',
-        # 'captchaForm:j_idt989:input': capther,
-        'captchaForm:j_idt1104:input': capther,
+        # 'captchaForm:j_idt989:input': chaptcha,
+        'captchaForm:j_idt1104:input': chaptcha,
         'captchaForm:SUBMIT': '',
         'javax.faces.ViewState': viewstate
     }
@@ -97,11 +97,11 @@ def get_tmeporary_cookie(capther, viewstate, headers, rep=5):
         #     viewstate = re.findall('ViewState:0.*value=\"([0-9\-:]*)\"',resp.text)[0]
         for i in pics:
             img_urls.append(url_home + i.get('src'))
-        capther = get_chaptcha_answer(qt, img_urls, headers)
+        chaptcha = get_chaptcha_answer(qt, img_urls, headers)
 
         rep -= 1
         if rep >= 0:
-            return get_tmeporary_cookie(capther, viewstate, headers, rep)
+            return get_tmeporary_cookie(chaptcha, viewstate, headers, rep)
         else:
             print('无法破解验证码，可能验证码图形库更换了')
             raise
@@ -162,8 +162,8 @@ def get_tp_cookie(cookie):
     for i in pics:
         img_urls.append(url_home + i.get('src'))
 
-    capther = get_chaptcha_answer(qt, img_urls, headers)
-    tp_cookie = get_tmeporary_cookie(capther, viewstate, headers)
+    chaptcha = get_chaptcha_answer(qt, img_urls, headers)
+    tp_cookie = get_tmeporary_cookie(chaptcha, viewstate, headers)
 
     return tp_cookie
     
