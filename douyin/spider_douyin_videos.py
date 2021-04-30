@@ -34,7 +34,7 @@ for user in users_list:
             
     print('正在获取视频链接') 
     video_urls = []
-    max_cursor, video_count = None, 0
+    max_cursor, video_count, user_name = None, 0, None
     while True:
         if max_cursor:
             user_video_params['max_cursor'] = str(max_cursor)
@@ -42,6 +42,8 @@ for user in users_list:
         res = requests.get(user_video_url, headers=headers, params=user_video_params)
         js = json.loads(res.text)
         
+        if not user_name:
+            user_name = js['aweme_list'][0]['author']['nickname']
         for i in js['aweme_list']:
             video_count += 1
             video_urls.append((i['video']['play_addr']['url_list'][0],i['desc']))
@@ -50,7 +52,7 @@ for user in users_list:
         else:
             break
     
-    user_name = js['aweme_list'][0]['author']['nickname']
+    
     user_path = os.getcwd() + '\\' + user_name
     if not os.path.exists(user_path):
         os.makedirs(user_path)
