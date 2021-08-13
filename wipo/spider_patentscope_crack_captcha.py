@@ -82,7 +82,7 @@ def get_tmeporary_cookie(chaptcha, viewstate, headers, rep=5):
     }
     resp = requests.post(u_ans, headers=headers, data=ans_data, allow_redirects=False)
     
-    if  ('set-cookie' in resp.headers) and ('PS2_TOKEN21' in resp.headers['Set-Cookie']):
+    if  ('set-cookie' in resp.headers) and ('PS2_' in resp.headers['Set-Cookie']):
         print(resp.headers['Set-Cookie'])
         # print(rep)
         return resp.headers['Set-Cookie'].split(';')[0]    
