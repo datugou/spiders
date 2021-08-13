@@ -172,6 +172,6 @@ def main():
     tp_cookie = get_tp_cookie(cookie)
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36',
-        'Cookie': cookie + '; '+tp_cookie
+        'Cookie': cookie + '; ' + tp_cookie
     }
     return headers
