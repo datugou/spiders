@@ -63,25 +63,33 @@ def get_ori_cookie():
     
     return cookie
 
-def get_tmeporary_cookie(chaptcha, viewstate, headers, rep=5):
+def get_tmeporary_cookie(input_id, chaptcha, viewstate, headers, rep=5):
     '''
     提交验证码答案，获取临时cookie的值
     '''
     u_ans = 'https://patentscope2.wipo.int/search/en/captcha/captcha.jsf'
     ans_data = {
-        # 'javax.faces.partial.ajax': 'true',
-        # 'javax.faces.source': 'captchaForm:SUBMIT',
-        # 'javax.faces.partial.execute': 'captchaForm',
-        # 'javax.faces.partial.render': 'captchaForm',
-        # 'captchaForm:SUBMIT': 'captchaForm:SUBMIT',
+        'javax.faces.partial.ajax': 'true',
+        'javax.faces.source': 'captchaForm:SUBMIT',
+        'javax.faces.partial.execute': 'captchaForm',
+        'javax.faces.partial.render': 'captchaForm',
+        'captchaForm:SUBMIT': 'captchaForm:SUBMIT',
         'captchaForm': 'captchaForm',
-        # 'captchaForm:j_idt989:input': chaptcha,
-        'captchaForm:j_idt1104:input': chaptcha,
-        'captchaForm:SUBMIT': '',
+        input_id: chaptcha,
+   
+#         'captchaForm:SUBMIT': '',
         'javax.faces.ViewState': viewstate
     }
     resp = requests.post(u_ans, headers=headers, data=ans_data, allow_redirects=False)
     
+    u = 'https://patentscope2.wipo.int/search/en/captcha/captcha.jsf'
+    dt2 = {
+        'captchaForm': 'captchaForm',
+        'captchaForm:RENEW': '',
+        'javax.faces.ViewState': viewstate
+    }
+    resp = requests.post(u, headers=headers, data=dt2, allow_redirects=False, proxies=proxies, timeout=300)
+
     if  ('set-cookie' in resp.headers) and ('PS2_' in resp.headers['Set-Cookie']):
         print(resp.headers['Set-Cookie'])
         # print(rep)
@@ -151,7 +159,7 @@ def get_tp_cookie(cookie):
                 }
     resp = requests.get('https://patentscope2.wipo.int/search/en/captcha/captcha.jsf', headers=headers)
     viewstate = re.findall('ViewState:0.*value=\"([0-9\-:]*)\"',resp.text)[0]
-
+    input_id = re.findall('captchaForm:j_idt[0-9]+:input', resp.text)[0]
     img_urls = []
     sp = BeautifulSoup(resp.content)
     question = sp.find_all('span',class_='b-input__label')[0]
@@ -163,7 +171,7 @@ def get_tp_cookie(cookie):
         img_urls.append(url_home + i.get('src'))
 
     chaptcha = get_chaptcha_answer(qt, img_urls, headers)
-    tp_cookie = get_tmeporary_cookie(chaptcha, viewstate, headers)
+    tp_cookie = get_tmeporary_cookie(input_id, chaptcha, viewstate, headers)
 
     return tp_cookie
     
