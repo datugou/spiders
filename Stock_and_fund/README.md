@@ -2,7 +2,7 @@
 2026.05.27
 
 ---
-免费的数据可以从 AKshare 这个库获取。
+免费的数据可以从 [AKshare](https://github.com/akfamily/akshare) 这个库获取。
 
 AKshare 中，部分东方财富网的数据接口不能用了，东方财富网现在有反爬措施。
 
