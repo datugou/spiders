@@ -7,9 +7,9 @@
 AKshare 中，部分东方财富网的数据接口不能用了，东方财富网现在有反爬措施。
 
 
-## 个股板块信息
+## [个股板块信息](https://github.com/datugou/spiders/blob/main/Stock_and_fund/get_stock_board.py) 2026.05.27
 
-东方财富网，根据股票代码，获取股票的板块信息。
+数据来源是东方财富网，根据股票代码，获取股票的板块信息。
 
 所有股票代码用 AKshare 的 stock_zh_a_spot() 方法获取。
 
