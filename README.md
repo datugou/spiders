@@ -2,6 +2,17 @@
 各种爬虫：爱企查爬虫，网上114企业信息爬虫，抖音视频爬虫，wipo爬虫， 专利信息爬虫（patentscope）
 ___
 
+### [股票基金数据爬虫](https://github.com/datugou/spiders/blob/main/Stock_and_fund/README.md)
+大部分免费的数据可以从 [AKshare](https://github.com/akfamily/akshare) 这个库获取。
+
+AKshare 中，某些东方财富网的数据接口不能用了，东方财富网现在有反爬措施。
+
+- [东方财富网个股板块信息](https://github.com/datugou/spiders/blob/main/Stock_and_fund/get_stock_board.py) 2026.05.27
+- [东方财富网基金每日行情数据](https://github.com/datugou/spiders/blob/main/Stock_and_fund/get_fund_daliy_data_em.py) 2026.05.27
+- [新浪财经网基金每日行情数据](https://github.com/datugou/spiders/blob/main/Stock_and_fund/get_fund_daliy_data_sina.py) 2026.05.27
+- [新浪财经网基金十大重仓股数据](https://github.com/datugou/spiders/blob/main/Stock_and_fund/get_fund_sdzc_sina.py) 2026.05.27
+
+
 ### 企业、公司信用信息爬虫
 
 - [爱企查爬虫](https://github.com/datugou/spiders/blob/main/aiqicha)  
