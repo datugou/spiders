@@ -40,5 +40,11 @@ AKshare 中，部分东方财富网的数据接口不能用了，东方财富网
 
 每次访问只能获取 20 个交易日的净值数据，最好开多线程下载，但是也很慢，全部基金有 26000 多个，我下完用了 4 天。
 
+## 基金重仓股数据 
+
+### [新浪财经网基金十大重仓股数据](https://github.com/datugou/spiders/blob/main/Stock_and_fund/get_fund_sdzc_sina.py) 2026.05.27
+
+获取基金十大重仓股的股票代码和占比。
+
 ---
 [返回首页](https://github.com/datugou/spiders)
